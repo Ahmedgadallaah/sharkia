@@ -44,13 +44,22 @@ class InvestRoleController extends Controller
         $data = [
             'en' => [
                 'name'=> $request->input('en_name'),
-                'description'=> $request->input('en_description'),
+                //'description'=> $request->input('en_description'),
             ],
             'ar' => [
                 'name'=> $request->input('ar_name'),
-                'description'=> $request->input('ar_description'),
+                //'description'=> $request->input('ar_description'),
             ],
         ];
+        IF ($request->HASFILE('image')) {
+
+            $image = $request->FILE('image');
+            $FILENAME = 'role' . '-' . TIME() . '.' . $image->GETCLIENTORIGINALEXTENSION();
+            $LOCATION = PUBLIC_PATH('images/role');
+            $request->FILE('image')->MOVE($LOCATION, $FILENAME);
+            $data['image']= $FILENAME;
+         }
+
         //dd($data);
         InvestRole::create($data);
         Session::put('message', 'Data Created Successfully !!');
@@ -97,15 +106,25 @@ class InvestRoleController extends Controller
             $data = [
                 'en' => [
                     'name'=> $request->input('en_name'),
-                    'description'=> $request->input('en_description'),
+                //    'description'=> $request->input('en_description'),
                 ],
                 'ar' => [
                     'name'=> $request->input('ar_name'),
-                    'description'=> $request->input('ar_description'),
+                  //  'description'=> $request->input('ar_description'),
                 ],
             ];
 
 
+            IF ($request->HASFILE('image')) {
+                @unlink(public_path('images/role'.$role->image));
+                $image = $request->FILE('image');
+                $FILENAME = 'role' . '-' . TIME() . '.' . $image->GETCLIENTORIGINALEXTENSION();
+                $LOCATION = PUBLIC_PATH('images/role');
+                $request->FILE('image')->MOVE($LOCATION, $FILENAME);
+                $data['image']= $FILENAME;
+             }else{
+                $data['image']=$role->image;
+             }
 
         $role->update($data);
         Session::put('message', 'Data Updated Successfully !!');
@@ -123,7 +142,7 @@ class InvestRoleController extends Controller
     {
 
         $role = InvestRole::find($id);
-
+        @unlink(public_path('images/role'.$role->image));
         $section->delete();
         Session::put('message', 'Data Deleted Successfully !!');
         return Redirect::to('/admin/role/');

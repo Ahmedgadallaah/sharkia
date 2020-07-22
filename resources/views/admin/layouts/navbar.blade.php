@@ -219,11 +219,11 @@
         <ul class="treeview-menu">
           <li><a href="{{url::to('admin/antique')}}"><i class="fa fa-circle-o"></i> {{trans('message.Archeology tourism')}}</a></li>
           <li><a href="{{url::to('admin/desert')}}"><i class="fa fa-circle-o"></i> {{trans('message.Desert tourism')}}</a></li>
-          <li><a href="{{url::to('admin/conference')}}"><i class="fa fa-circle-o"></i> {{trans('message.investment map')}}</a></li>
+          <li><a href="{{url::to('admin/conference')}}"><i class="fa fa-circle-o"></i> {{trans('message.Conference tourism')}}</a></li>
 
           <li class="treeview">
             <a href="#">
-            <span>{{trans('message.investment egyptian map')}}</span>
+            <span>{{trans('message.Relegion tourism')}}</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -237,7 +237,7 @@
 
           <li class="treeview">
                     <a href="#">
-                    <span>{{trans('message.investment egyptian map')}}</span>
+                    <span>{{trans('message.countryside tourism')}}</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -249,7 +249,7 @@
                 </li>
 
 
-          <li><a href="{{url::to('admin/museum')}}"><i class="fa fa-circle-o"></i> {{trans('message.museum')}}</a></li>
+          <li><a href="{{url::to('admin/museum')}}"><i class="fa fa-circle-o"></i> {{trans('message.mueseum')}}</a></li>
           <li><a href="{{url::to('admin/sport')}}"><i class="fa fa-circle-o"></i> {{trans('message.sport tourism')}}</a></li>
 
 

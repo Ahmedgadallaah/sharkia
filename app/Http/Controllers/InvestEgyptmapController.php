@@ -85,14 +85,14 @@ class InvestEgyptmapController extends Controller
          $this->validate($request, [
         ]);
         $data = [
-            'en' => [
-                'name'=> $request->input('en_name'),
-                ],
-        'ar' => [
-                'name'=> $request->input('ar_name'),
-                ],
-                ];
 
+            'en' => [
+                    'description'=> $request->input('en_description'),
+                    ],
+            'ar' => [
+                    'description'=> $request->input('ar_description'),
+                    ],
+                ];
          $map->update($data);
          Session::put('message', 'Data Updated Successfully !!');
          // Redirect to the previous page successfully

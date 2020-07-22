@@ -11,7 +11,7 @@ class Areatitle extends Model implements TranslatableContract
 {
     use Translatable;
 
-    protected $fillable = ['id','invest_area_id'];
+    protected $fillable = ['image','invest_area_id'];
     public $translatedAttributes = ['name','description'];
 
     public function area(){

@@ -15,7 +15,6 @@ class CreateInvestDevmapTranslationsTable extends Migration
     {
         Schema::create('invest_devmap_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
             $table->longtext('description');
             $table->unsignedBigInteger('invest_devmap_id');
             $table->string('locale')->index();

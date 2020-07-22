@@ -15,6 +15,7 @@ class CreateInvestRolesTable extends Migration
     {
         Schema::create('invest_roles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image');
             $table->timestamps();
         });
     }

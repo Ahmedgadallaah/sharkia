@@ -38,7 +38,16 @@ class InvestAreaController extends Controller
             'en' => ['name'=> $request->input('en_name')],
             'ar' => ['name'=> $request->input('ar_name')],
                 ];
-        //dd($data);
+
+                IF ($request->HASFILE('image')) {
+
+                    $image = $request->FILE('image');
+                    $FILENAME = 'area' . '-' . TIME() . '.' . $image->GETCLIENTORIGINALEXTENSION();
+                    $LOCATION = PUBLIC_PATH('images/area');
+                    $request->FILE('image')->MOVE($LOCATION, $FILENAME);
+                    $data['image']= $FILENAME;
+                 }
+                //dd($data);
         InvestArea::create($data);
          Session::put('message', 'Data Created Successfully !!');
          return Redirect::to('admin/area/');
@@ -93,6 +102,18 @@ class InvestAreaController extends Controller
                 ];
 
 
+
+            IF ($request->HASFILE('image')) {
+                @unlink(public_path('images/area'.$area->image));
+                $image = $request->FILE('image');
+                $FILENAME = 'area' . '-' . TIME() . '.' . $image->GETCLIENTORIGINALEXTENSION();
+                $LOCATION = PUBLIC_PATH('images/area');
+                $request->FILE('image')->MOVE($LOCATION, $FILENAME);
+                $data['image']= $FILENAME;
+             }else{
+                $data['image']=$area->image;
+             }
+
          $area->update($data);
          Session::put('message', 'Data Updated Successfully !!');
          // Redirect to the previous page successfully
@@ -109,7 +130,7 @@ class InvestAreaController extends Controller
     public function destroy($id)
     {
         $area = InvestArea::find($id);
-
+        @unlink(public_path('images/area'.$area->image));
         $area->delete();
         Session::put('message', 'Data Created Successfully !!');
         return Redirect::to('/admin/area/');

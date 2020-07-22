@@ -15,6 +15,7 @@ class CreateAreatitlesTable extends Migration
     {
         Schema::create('areatitles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image');
             $table->unsignedBigInteger('invest_area_id');
             $table->foreign('invest_area_id')->references('id')->on('invest_areas')->onDelete('cascade');
             $table->timestamps();

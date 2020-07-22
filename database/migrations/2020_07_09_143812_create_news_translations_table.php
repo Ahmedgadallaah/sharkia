@@ -15,7 +15,17 @@ class CreateNewsTranslationsTable extends Migration
     {
         Schema::create('news_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('date');
+            $table->string('description');
             $table->timestamps();
+            $table->unsignedBigInteger('news_id');
+            $table->string('locale')->index();
+
+
+            $table->unique(['news_id', 'locale']);
+            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
+
         });
     }
 

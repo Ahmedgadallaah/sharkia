@@ -23,7 +23,7 @@
                 @foreach($media->gallery as $image)
                 <tr>
                   <td>{{  $image->media_id }}</td>
-                  <td><img src="{{ asset('images/media_minister/'.$image->images) }}" style="width:80px;height:80px;"></td>
+                  <td><img src="{{ asset('images/media_person/'.$image->images) }}" style="width:80px;height:80px;"></td>
 
                 </tr>
                 @endforeach

@@ -15,6 +15,12 @@ class CreateAboutTranslationsTable extends Migration
     {
         Schema::create('about_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->longText('description');
+            $table->unsignedBigInteger('about_id');
+            $table->string('locale')->index();
+
+            $table->unique(['about_id', 'locale']);
+            $table->foreign('about_id')->references('id')->on('abouts')->onDelete('cascade');
             $table->timestamps();
         });
     }

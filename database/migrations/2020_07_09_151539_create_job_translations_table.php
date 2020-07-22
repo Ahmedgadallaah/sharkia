@@ -15,6 +15,12 @@ class CreateJobTranslationsTable extends Migration
     {
         Schema::create('job_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->unsignedBigInteger('job_id');
+            $table->string('locale')->index();
+
+            $table->unique(['job_id', 'locale']);
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -45,7 +45,7 @@ class RelegionController extends Controller
                 'description'=> $request->input('en_description'),
             ],
             'ar' => [
-                'description'=> $request->input('en_description'),
+                'description'=> $request->input('ar_description'),
             ],
         ];
 

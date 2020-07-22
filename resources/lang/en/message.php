@@ -226,7 +226,7 @@ return
             'countryside tourism Detail'=>'countryside tourism Detail',
             'Relegion tourism'=>'Relegion tourism',
             'Relegion tourism Detail'=>'Relegion tourism Detail' ,
-            'mueseum '=>'Museum',
+            'mueseum'=>'Museum',
             'sport tourism'=>'Sport tourism',
             'Conference tourism'=>'Conference tourism',
 

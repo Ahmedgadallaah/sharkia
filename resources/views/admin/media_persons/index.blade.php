@@ -5,7 +5,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-                <a href="{{url ('/admin/media_minister/create') }}"><button  class="btn btn-primary">{{ trans('message.Add New') }}</button></a>
+                <a href="{{url ('/admin/media_person/create') }}"><button  class="btn btn-primary">{{ trans('message.Add New') }}</button></a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -27,17 +27,17 @@
                   <td>{{ $media->name }}</td>
 
 
-                  <td><img src="{{asset('images/media_minister/'.$media->image)}}" style='width:60px;height:60px;'></td>
+                  <td><img src="{{asset('images/media_person/'.$media->image)}}" style='width:60px;height:60px;'></td>
                    <td>
 
-                  <a id="delete" class="btn btn-primary" href="{{URL::to('/admin/media_minister/edit/'.$media->id)}} ">
+                  <a id="delete" class="btn btn-primary" href="{{URL::to('/admin/media_person/edit/'.$media->id)}} ">
 								<i class="halflings-icon white trash"></i>
                             Edit</a>
 
-                    <a id="delete" class="btn btn-success" href="{{URL::to('/admin/media_minister/images/'.$media->id)}} ">
+                    <a id="delete" class="btn btn-success" href="{{URL::to('/admin/media_person/images/'.$media->id)}} ">
 						    		<i class="halflings-icon white trash"></i>
                         Gallery</a>
-                            <a id="delete" class="btn btn-danger" href="{{URL::to('admin/media_minister/delete/'.$media->id)}} ">
+                            <a id="delete" class="btn btn-danger" href="{{URL::to('admin/media_person/delete/'.$media->id)}} ">
 								<i class="halflings-icon white trash"></i>
                             x</a>
                         </td>

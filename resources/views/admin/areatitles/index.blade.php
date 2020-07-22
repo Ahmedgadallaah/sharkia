@@ -14,9 +14,8 @@
                 <tr>
                   <th>Id</th>
                   <th>{{ trans('message.name') }} </th>
-
                   <th>{{ trans('message.description') }}</th>
-
+                  <th>{{ trans('message.image') }}</th>
                   <th colspan="2"> Action</th>
                 </tr>
                 </thead>
@@ -26,12 +25,18 @@
                   <td>{{ $title->id }}</td>
                   <td>{{ $title->name }}</td>
                   <th>{{ $title->description  }} </th>
-
-<td>
+                  <td>
+                    <img src="{{asset('images/areatitle/'.$title->image)}}" style="width:80px;height:80px;">
+                </td>
+                    <td>
 
                   <a id="delete" class="btn btn-primary" href="{{URL::to('/admin/areatitle/edit/'.$title->id)}} ">
 								<i class="halflings-icon white trash"></i>
                             Edit</a>
+
+                            <a id="delete" class="btn btn-success" href="{{URL::to('/admin/areatitle/images/'.$title->id)}} ">
+								<i class="halflings-icon white trash"></i>
+                            Gallery</a>
                             <a id="delete" class="btn btn-danger" href="{{URL::to('admin/areatitle/delete/'.$title->id)}} ">
 								<i class="halflings-icon white trash"></i>
                             x</a>

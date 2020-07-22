@@ -41,11 +41,11 @@ class InvestDevmapController extends Controller
     {
         $data = [
             'en' => [
-                'name'=> $request->input('en_name'),
+
                 'description'=> $request->input('en_description'),
             ],
             'ar' => [
-                'name'=> $request->input('ar_name'),
+
                 'description'=> $request->input('ar_description'),
             ],
         ];
@@ -92,11 +92,11 @@ class InvestDevmapController extends Controller
 
         $data = [
             'en' => [
-                'name'=> $request->input('en_name'),
+
                 'description'=> $request->input('en_description'),
             ],
             'ar' => [
-                'name'=> $request->input('ar_name'),
+
                 'description'=> $request->input('ar_description'),
             ],
         ];

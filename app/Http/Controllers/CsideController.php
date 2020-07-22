@@ -49,12 +49,20 @@ class CsideController extends Controller
             ],
             'ar' => [
                 'name'=> $request->input('ar_name'),
-                'description'=> $request->input('en_description'),
+                'description'=> $request->input('ar_description'),
             ],
         ];
 
+        IF ($request->HASFILE('image')) {
 
-      //  dd($data);
+            $image = $request->FILE('image');
+            $FILENAME = 'cside' . '-' . TIME() . '.' . $image->GETCLIENTORIGINALEXTENSION();
+            $LOCATION = PUBLIC_PATH('images/cside/');
+            $request->FILE('image')->MOVE($LOCATION, $FILENAME);
+            $data['image']= $FILENAME;
+                  }
+
+      // dd($data);
         Cside::create($data);
         Session::put('message', 'Data Created Successfully !!');
         return Redirect::to('admin/cside/');
@@ -105,7 +113,16 @@ class CsideController extends Controller
                 ],
             ];
 
-
+            IF ($request->HASFILE('image')) {
+                @unlink(public_path('images/cside/'.$cside->image));
+                $image = $request->FILE('image');
+                $FILENAME = 'cside' . '-' . TIME() . '.' . $image->GETCLIENTORIGINALEXTENSION();
+                $LOCATION = PUBLIC_PATH('images/cside/');
+                $request->FILE('image')->MOVE($LOCATION, $FILENAME);
+                $data['image']= $FILENAME;
+             }else{
+                 $data['image']=$cside->image;
+                }
 
         $cside->update($data);
         Session::put('message', 'Data Updated Successfully !!');
@@ -123,7 +140,7 @@ class CsideController extends Controller
     public function destroy($id)
     {
         $cside = Cside::find($id);
-
+        @unlink(public_path('images/cside/'.$cside->image));
 
         $cside->delete();
         Session::put('message', 'Data Deleted Successfully !!');

@@ -16,7 +16,7 @@
                   <th>{{ trans('message.name') }} </th>
 
                   <th>{{ trans('message.description') }}</th>
-
+                  <th>{{ trans('message.image') }}</th>
                   <th colspan="2"> Action</th>
                 </tr>
                 </thead>
@@ -27,7 +27,7 @@
                   <td>{{ $cside->name }}</td>
                   <td>{{ $cside->description }}</td>
 
-
+                  <td><img src="{{asset('images/cside/'.$cside->image)}}" style='width:60px;height:60px;'></td>
                    <td><a id="delete" class="btn btn-primary" href="{{URL::to('/admin/cside/edit/'.$cside->id)}} ">
 								<i class="halflings-icon white trash"></i>
                             Edit</a>

@@ -44,7 +44,7 @@ class InvestChanceController extends Controller
 
             $pdf = $request->FILE('pdf');
             $FILENAME = 'invest_chance' . '-' . TIME() . '.' . $pdf->GETCLIENTORIGINALEXTENSION();
-            $LOCATION = PUBLIC_PATH('images/invest_chance');
+            $LOCATION = PUBLIC_PATH('cv/invest_chance');
             $request->FILE('pdf')->MOVE($LOCATION, $FILENAME);
             $data['pdf']= $FILENAME;
          }
@@ -91,10 +91,10 @@ class InvestChanceController extends Controller
         $chance = InvestChance::findOrFail($id);
 
         IF ($request->HASFILE('pdf')) {
-            @unlink(public_path('images/invest_chance/'.$chance->pdf));
+            @unlink(public_path('cv/invest_chance/'.$chance->pdf));
             $pdf = $request->FILE('pdf');
             $FILENAME = 'invest_chance' . '-' . TIME() . '.' . $pdf->GETCLIENTORIGINALEXTENSION();
-            $LOCATION = PUBLIC_PATH('images/invest_chance');
+            $LOCATION = PUBLIC_PATH('cv/invest_chance');
             $request->FILE('pdf')->MOVE($LOCATION, $FILENAME);
             $data['pdf']= $FILENAME;
          }else{
@@ -120,7 +120,7 @@ class InvestChanceController extends Controller
 
         $chance = InvestChance::find($id);
 
-        @unlink(public_path('images/invest_chance/'.$chance->pdf));
+        @unlink(public_path('cv/invest_chance/'.$chance->pdf));
         $chance->delete();
         Session::put('message', 'Data Deleted Successfully !!');
         return Redirect::to('/admin/chance/');

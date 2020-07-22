@@ -1,7 +1,7 @@
 @extends('admin.index')
 @section('content')
 
-<form action="{{URL::to('/admin/media_minister/edit/'.$media->id) }}" method="post" enctype="multipart/form-data" >
+<form action="{{URL::to('/admin/media_person/edit/'.$media->id) }}" method="post" enctype="multipart/form-data" >
     {{ csrf_field() }}
 
 
@@ -112,7 +112,7 @@
 
 
      <div class="card-body" id="arabic-form">
-        <img src="{{asset('images/media_minister/'.$media->image)}}" style="width:80px;height:80px;">
+        <img src="{{asset('images/media_person/'.$media->image)}}" style="width:80px;height:80px;">
     </div>
 
     <div class="card-body" id="arabic-form">

@@ -48,7 +48,7 @@ class DesertController extends Controller
             ],
             'ar' => [
                 'name'=> $request->input('ar_name'),
-                'description'=> $request->input('en_description'),
+                'description'=> $request->input('ar_description'),
             ],
         ];
 

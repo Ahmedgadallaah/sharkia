@@ -30,8 +30,18 @@
     </div>
  </div>
 
-
- <div class="box box-info">
+ <div class="card-body" id="arabic-form">
+    <div class="form-group">
+        <label class="required" for="image">{{ trans('message.image') }}</label>
+            <input  type="file" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"  name="image" accept="image/*" required>
+        @if($errors->has('image'))
+            <div class="invalid-feedback">
+                {{ $errors->first('image') }}
+            </div>
+        @endif
+    </div>
+ </div>
+ {{-- <div class="box box-info">
     <div class="box-header">
       <h3 class="box-title">{{ trans('message.description') }} (EN)</h3>
       <!-- tools box -->
@@ -80,7 +90,7 @@
         @endif
     </div>
 
-</div>
+</div> --}}
 
 
 <button type="submit" class="btn btn-primary">{{ trans('message.submit') }}</button>

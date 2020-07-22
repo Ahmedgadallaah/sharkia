@@ -49,7 +49,7 @@ class ShaDescriptionController extends Controller
             ],
             'ar' => [
 
-                'description'=> $request->input('en_description'),
+                'description'=> $request->input('ar_description'),
             ],
             'type'=> $request->input('type'),
 
@@ -102,7 +102,7 @@ class ShaDescriptionController extends Controller
                 ],
                 'ar' => [
 
-                    'description'=> $request->input('en_description'),
+                    'description'=> $request->input('ar_description'),
                 ],
                 'type'=> $request->input('type'),
             ];

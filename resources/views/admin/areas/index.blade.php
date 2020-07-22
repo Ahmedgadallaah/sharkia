@@ -14,6 +14,7 @@
                 <tr>
                   <th>Id</th>
                   <th>{{ trans('message.name') }} </th>
+
                   <th colspan="2"> Action</th>
                 </tr>
                 </thead>
@@ -22,7 +23,10 @@
                 <tr>
                   <td>{{ $area->id }}</td>
                   <td>{{ $area->name }}</td>
-                  <td>
+
+
+
+                    <td>
 
                   <a id="delete" class="btn btn-primary" href="{{URL::to('/admin/area/edit/'.$area->id)}} ">
 								<i class="halflings-icon white trash"></i>

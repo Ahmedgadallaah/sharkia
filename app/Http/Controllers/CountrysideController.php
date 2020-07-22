@@ -48,7 +48,7 @@ class CountrysideController extends Controller
             ],
             'ar' => [
 
-                'description'=> $request->input('en_description'),
+                'description'=> $request->input('ar_description'),
             ],
         ];
 

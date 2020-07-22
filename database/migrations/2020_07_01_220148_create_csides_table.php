@@ -15,6 +15,7 @@ class CreateCsidesTable extends Migration
     {
         Schema::create('csides', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image');
             $table->timestamps();
         });
     }

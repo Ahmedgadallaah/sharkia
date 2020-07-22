@@ -237,11 +237,12 @@ return
 'tourism'=>'السياحة',
 'Archeology tourism'=>'السياحة الأثرية',
 'Desert tourism'=>'السياحة الصحراوية',
+
 'countryside tourism'=>'السياحة الريفية',
 'countryside tourism Detail'=>'تفاصيل السياحة الريفية',
 'Relegion tourism'=>'السياحة الدينية',
 'Relegion tourism Detail'=>'تفاصيل السياحة الدينية' ,
-'mueseum '=>'المتاحف',
+'mueseum'=>'المتاحف',
 'sport tourism'=>'السياحة الرياضية',
 'Conference tourism'=>'سياحة المؤتمرات',
 

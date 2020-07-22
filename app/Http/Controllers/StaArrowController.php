@@ -18,6 +18,7 @@ class StaArrowController extends Controller
     public function index()
     {
         $arrows = Statistic::where('type','arrow')->paginate(10);
+
             return view('admin.sarrows.index',compact('arrows'));
     }
 

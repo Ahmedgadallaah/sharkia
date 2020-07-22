@@ -12,9 +12,86 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
+
+/////////////// front routes  ///////////////////
+
+// Route::get('/governer-cv', function () {
+//     return view('front.leaders.governer');
+// });
+Route::get('/governer-cv', 'HomeController@governer');
+Route::get('/leaders', 'HomeController@leaders');
+Route::get('/governers', 'HomeController@governers');
+//////////////////////////////////////////////////////////////
+
+Route::get('/directorates', 'HomeController@directorate');
+Route::get('/cities', 'HomeController@city');
+Route::get('/companies', 'HomeController@company');
+Route::get('/bodies', 'HomeController@body');
+//////////////////////////////////////////////////////////////
+
+Route::get('/media-governers', 'HomeController@media_governer');
+Route::get('/media-ministers', 'HomeController@media_minister');
+Route::get('/media-media', 'HomeController@media_media');
+Route::get('/media-persons', 'HomeController@media_person');
+
+Route::get('/media-governers/{id}', 'HomeController@media_governers');
+Route::get('/media-medias/{id}', 'HomeController@media_medias');
+Route::get('/media-ministers/{id}', 'HomeController@media_ministers');
+Route::get('/media-persons/{id}', 'HomeController@media_persons');
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/investment-sector', 'HomeController@sector');
+Route::get('/investment-oportunities', 'HomeController@oportunitiy');
+Route::get('/egymaps', 'HomeController@egymap');
+Route::get('/map', 'HomeController@map');
+Route::get('/egymap', 'AjaxController@egymap')->name('egymap');
+Route::get('/invest-role', 'HomeController@role');
+Route::get('/invest-devmap', 'HomeController@devmap');
+Route::get('/invest-area', 'HomeController@area');
+Route::get('/invest-guide', 'HomeController@guide');
+Route::get('/invguide', 'AjaxController@invguide')->name('invguide');
+Route::get('/invest-areatitle/{id}', 'HomeController@areatitle');
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/conference', 'HomeController@conference');
+Route::get('/antiques', 'HomeController@antiques');
+Route::get('/antique/{id}', 'HomeController@antique');
+Route::get('/deserts', 'HomeController@deserts');
+Route::get('/desert/{id}', 'HomeController@desert');
+Route::get('/museums', 'HomeController@museums');
+Route::get('/museum/{id}', 'HomeController@museum');
+Route::get('/sports', 'HomeController@sports');
+Route::get('/sport/{id}', 'HomeController@sport');
+Route::get('/relegions', 'HomeController@relegions');
+Route::get('/relegion/{id}', 'HomeController@relegion');
+Route::get('/countrysides', 'HomeController@csides');
+Route::get('/countryside/{id}', 'HomeController@cside');
+////////////////////////////////////////////////////////////////////////////////////////
+Route::get('/arrows', 'HomeController@starrow');
+Route::get('/arrow', 'AjaxController@arrow')->name('arrow');
+Route::get('/months', 'HomeController@stmonth');
+Route::get('/month', 'AjaxController@month')->name('month');
+Route::get('/description', 'HomeController@stdescription');
+Route::get('/manages', 'HomeController@stmanage');
+Route::get('/manage', 'AjaxController@manage')->name('manage');
+Route::get('/maps', 'HomeController@stmaps');
+Route::get('/stmap', 'AjaxController@stmap')->name('stmap');
+Route::get('/peoples', 'HomeController@stpeople');
+Route::get('/people', 'AjaxController@people')->name('people');
+
+////////////////////////////////////////////////////////////////////////////////////////
+Route::get('/guide', 'HomeController@servguide');
+Route::get('/gate', 'HomeController@servgate');
+Route::get('/urgent', 'HomeController@servurgent');
+Route::get('/traffic', 'AjaxController@traffic')->name('traffic');
+Route::get('/health', 'AjaxController@health')->name('health');
+Route::get('/paper', 'AjaxController@paper')->name('paper');
+////////////////////////////////////////////////////////////////////////////////////////
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -255,15 +332,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
         //---------Invest egyptmap routes---------------------------
 
 
-        Route::get('/egypttitle/delete/{id}','InvEgytitleController@destroy');
-        Route::get('/egypttitle/edit/{id}','InvEgytitleController@edit');
-        Route::post('/egypttitle/edit/{id}','InvEgytitleController@update');
-        Route::get('/egypttitle/images/{id}','InvEgytitleController@image');
-        Route::get('/egypttitle/create',  'InvEgytitleController@create');
-        Route::get('egypttitle/', 'InvEgytitleController@index');
-        Route::post('egypttitle/store', 'InvEgytitleController@store');
-        Route::get('egypttitle/InActive_egypttitle/{id}', 'InvEgytitleController@InActive');
-        Route::get('egypttitle/Active_egypttitle/{id}', 'InvEgytitleController@Active');
+        Route::get('/egypttitle/delete/{id}','InvestEgypttitleController@destroy');
+        Route::get('/egypttitle/edit/{id}','InvestEgypttitleController@edit');
+        Route::post('/egypttitle/edit/{id}','InvestEgypttitleController@update');
+        Route::get('/egypttitle/images/{id}','InvestEgypttitleController@image');
+        Route::get('/egypttitle/create',  'InvestEgypttitleController@create');
+        Route::get('egypttitle/', 'InvestEgypttitleController@index');
+        Route::post('egypttitle/store', 'InvestEgypttitleController@store');
+        Route::get('egypttitle/InActive_egypttitle/{id}', 'InvestEgypttitleController@InActive');
+        Route::get('egypttitle/Active_egypttitle/{id}', 'InvestEgypttitleController@Active');
 
 
         //---------Invest devmap routes---------------------------
@@ -520,7 +597,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
         Route::get('servguide/Active_servguide/{id}', 'ServguideController@Active');
 
 
-  //---------Sport tour   routes---------------------------
+  //---------servurgent   routes---------------------------
 
         Route::get('/servurgent/delete/{id}','ServurgentController@destroy');
         Route::get('/servurgent/edit/{id}','ServurgentController@edit');
@@ -533,7 +610,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
         Route::get('servurgent/Active_servurgent/{id}', 'ServurgentController@Active');
 
 
-        //---------Sport tour   routes---------------------------
+        //---------shamap   routes---------------------------
 
         Route::get('/shamap/delete/{id}','ShaMapController@destroy');
         Route::get('/shamap/edit/{id}','ShaMapController@edit');
@@ -546,7 +623,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
         Route::get('shamap/Active_shamap/{id}', 'ShaMapController@Active');
 
 
-        //---------Sport tour   routes---------------------------
+        //---------shaline    routes---------------------------
 
         Route::get('/shaline/delete/{id}','ShaLineController@destroy');
         Route::get('/shaline/edit/{id}','ShaLineController@edit');
@@ -558,7 +635,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
         Route::get('shaline/InActive_shaline/{id}', 'ShaLineController@InActive');
         Route::get('shaline/Active_shaline/{id}', 'ShaLineController@Active');
 
-        //---------Sport tour   routes---------------------------
+        //---------shafeast   routes---------------------------
 
         Route::get('/shafeast/delete/{id}','ShaFeastController@destroy');
         Route::get('/shafeast/edit/{id}','ShaFeastController@edit');
@@ -571,7 +648,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
         Route::get('shafeast/Active_shafeast/{id}', 'ShaFeastController@Active');
 
 
-          //---------Sport tour   routes---------------------------
+          //---------shaphoto   routes---------------------------
 
         Route::get('/shaphoto/delete/{id}','ShaPhotoController@destroy');
         Route::get('/shaphoto/edit/{id}','ShaPhotoController@edit');
@@ -583,7 +660,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
         Route::get('shaphoto/InActive_shaphoto/{id}', 'ShaPhotoController@InActive');
         Route::get('shaphoto/Active_shaphoto/{id}', 'ShaPhotoController@Active');
 
-         //---------Sport tour   routes---------------------------
+         //---------shadescription   routes---------------------------
 
          Route::get('/shadescription/delete/{id}','ShaDescriptionController@destroy');
          Route::get('/shadescription/edit/{id}','ShaDescriptionController@edit');
@@ -595,7 +672,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
          Route::get('shadescription/InActive_shadescription/{id}', 'ShaDescriptionController@InActive');
          Route::get('shadescription/Active_shadescription/{id}', 'ShaDescriptionController@Active');
 
-         //---------Sport tour   routes---------------------------
+         //---------video   routes---------------------------
 
          Route::get('/video/delete/{id}','VideoController@destroy');
          Route::get('/video/edit/{id}','VideoController@edit');
@@ -607,7 +684,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
          Route::get('video/InActive_video/{id}', 'VideoController@InActive');
          Route::get('video/Active_video/{id}', 'VideoController@Active');
 
-        //---------Sport tour   routes---------------------------
+        //---------shacelebrate   routes---------------------------
 
          Route::get('/shacelebrate/delete/{id}','ShaCelebrateController@destroy');
          Route::get('/shacelebrate/edit/{id}','ShaCelebrateController@edit');
@@ -620,7 +697,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
          Route::get('shacelebrate/Active_shacelebrate/{id}', 'ShaCelebrateController@Active');
 
 
-        //---------Sport tour   routes---------------------------
+        //---------shaflagcat   routes---------------------------
 
          Route::get('/shaflagcat/delete/{id}','ShaFlagCatController@destroy');
          Route::get('/shaflagcat/edit/{id}','ShaFlagCatController@edit');
@@ -632,7 +709,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
          Route::get('shaflagcat/InActive_shaflagcat/{id}', 'ShaFlagCatController@InActive');
          Route::get('shaflagcat/Active_shaflagcat/{id}', 'ShaFlagCatController@Active');
 
-        //---------Sport tour   routes---------------------------
+        //---------shaflag   routes---------------------------
 
          Route::get('/shaflag/delete/{id}','ShaFlagController@destroy');
          Route::get('/shaflag/edit/{id}','ShaFlagController@edit');
@@ -643,4 +720,177 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function() {
          Route::post('shaflag/store', 'ShaFlagController@store');
          Route::get('shaflag/InActive_shaflag/{id}', 'ShaFlagController@InActive');
          Route::get('shaflag/Active_shaflag/{id}', 'ShaFlagController@Active');
-    });
+
+
+        //---------SLider routes---------------------------
+
+         Route::get('/slider/delete/{id}','SliderController@destroy');
+         Route::get('/slider/edit/{id}','SliderController@edit');
+         Route::post('/slider/edit/{id}','SliderController@update');
+         Route::get('/slider/images/{id}','SliderController@image');
+         Route::get('/slider/create',  'SliderController@create');
+         Route::get('slider/', 'SliderController@index');
+         Route::post('slider/store', 'SliderController@store');
+         Route::get('slider/InActive_slider/{id}', 'SliderController@InActive');
+         Route::get('slider/Active_slider/{id}', 'SliderController@Active');
+
+
+         //---------Social routes---------------------------
+
+         Route::get('/social/delete/{id}','SocialController@destroy');
+         Route::get('/social/edit/{id}','SocialController@edit');
+         Route::post('/social/edit/{id}','SocialController@update');
+         Route::get('/social/images/{id}','SocialController@image');
+         Route::get('/social/create',  'SocialController@create');
+         Route::get('social/', 'SocialController@index');
+         Route::post('social/store', 'SocialController@store');
+         Route::get('social/InActive_social/{id}', 'SocialController@InActive');
+         Route::get('social/Active_social/{id}', 'SocialController@Active');
+
+
+
+           //---------News_governer routes---------------------------
+
+         Route::get('/news_governer/delete/{id}','News_GovernerController@destroy');
+         Route::get('/news_governer/edit/{id}','News_GovernerController@edit');
+         Route::post('/news_governer/edit/{id}','News_GovernerController@update');
+         Route::get('/news_governer/images/{id}','News_GovernerController@image');
+         Route::get('/news_governer/create',  'News_GovernerController@create');
+         Route::get('news_governer/', 'News_GovernerController@index');
+         Route::post('news_governer/store', 'News_GovernerController@store');
+         Route::get('news_governer/InActive_news_governer/{id}', 'News_GovernerController@InActive');
+         Route::get('news_governer/Active_news_governer/{id}', 'News_GovernerController@Active');
+
+
+             //---------News_complaint routes---------------------------
+
+         Route::get('/news_complaint/delete/{id}','News_ComplaintController@destroy');
+         Route::get('/news_complaint/edit/{id}','News_ComplaintController@edit');
+         Route::post('/news_complaint/edit/{id}','News_ComplaintController@update');
+         Route::get('/news_complaint/images/{id}','News_ComplaintController@image');
+         Route::get('/news_complaint/create',  'News_ComplaintController@create');
+         Route::get('news_complaint/', 'News_ComplaintController@index');
+         Route::post('news_complaint/store', 'News_ComplaintController@store');
+         Route::get('news_complaint/InActive_news_complaint/{id}', 'News_ComplaintController@InActive');
+         Route::get('news_complaint/Active_news_complaint/{id}', 'News_ComplaintController@Active');
+
+        //---------Link routes---------------------------
+
+         Route::get('/link/delete/{id}','LinkController@destroy');
+         Route::get('/link/edit/{id}','LinkController@edit');
+         Route::post('/link/edit/{id}','LinkController@update');
+         Route::get('/link/images/{id}','LinkController@image');
+         Route::get('/link/create',  'LinkController@create');
+         Route::get('link/', 'LinkController@index');
+         Route::post('link/store', 'LinkController@store');
+         Route::get('link/InActive_link/{id}', 'LinkController@InActive');
+         Route::get('link/Active_link/{id}', 'LinkController@Active');
+
+
+                 //---------Privacy routes---------------------------
+
+         Route::get('/privacy/delete/{id}','PrivacyController@destroy');
+         Route::get('/privacy/edit/{id}','PrivacyController@edit');
+         Route::post('/privacy/edit/{id}','PrivacyController@update');
+         Route::get('/privacy/images/{id}','PrivacyController@image');
+         Route::get('/privacy/create',  'PrivacyController@create');
+         Route::get('privacy/', 'PrivacyController@index');
+         Route::post('privacy/store', 'PrivacyController@store');
+         Route::get('privacy/InActive_privacy/{id}', 'PrivacyController@InActive');
+         Route::get('privacy/Active_privacy/{id}', 'PrivacyController@Active');
+
+
+        //---------About routes---------------------------
+
+         Route::get('/about/delete/{id}','AboutController@destroy');
+         Route::get('/about/edit/{id}','AboutController@edit');
+         Route::post('/about/edit/{id}','AboutController@update');
+         Route::get('/about/images/{id}','AboutController@image');
+         Route::get('/about/create',  'AboutController@create');
+         Route::get('about/', 'AboutController@index');
+         Route::post('about/store', 'AboutController@store');
+         Route::get('about/InActive_about/{id}', 'AboutController@InActive');
+         Route::get('about/Active_about/{id}', 'AboutController@Active');
+
+
+        //---------Job routes---------------------------
+
+        Route::get('/job/delete/{id}','JobController@destroy');
+        Route::get('/job/edit/{id}','JobController@edit');
+        Route::post('/job/edit/{id}','JobController@update');
+        Route::get('/job/images/{id}','JobController@image');
+        Route::get('/job/create',  'JobController@create');
+        Route::get('job/', 'JobController@index');
+        Route::post('job/store', 'JobController@store');
+        Route::get('job/InActive_job/{id}', 'JobController@InActive');
+        Route::get('job/Active_job/{id}', 'JobController@Active');
+
+
+        //---------Vision routes---------------------------
+
+        Route::get('/vision/delete/{id}','VisionController@destroy');
+        Route::get('/vision/edit/{id}','VisionController@edit');
+        Route::post('/vision/edit/{id}','VisionController@update');
+        Route::get('/vision/images/{id}','VisionController@image');
+        Route::get('/vision/create',  'VisionController@create');
+        Route::get('vision/', 'VisionController@index');
+        Route::post('vision/store', 'VisionController@store');
+        Route::get('vision/InActive_vision/{id}', 'VisionController@InActive');
+        Route::get('vision/Active_vision/{id}', 'VisionController@Active');
+
+
+
+        //---------Question   routes---------------------------
+
+        Route::get('/question/delete/{id}','QuestionController@destroy');
+        Route::get('/question/edit/{id}','QuestionController@edit');
+        Route::post('/question/edit/{id}','QuestionController@update');
+        Route::get('/question/images/{id}','QuestionController@image');
+        Route::get('/question/create',  'QuestionController@create');
+        Route::get('question/', 'QuestionController@index');
+        Route::post('question/store', 'QuestionController@store');
+        Route::get('question/InActive_question/{id}', 'QuestionController@InActive');
+        Route::get('question/Active_question/{id}', 'QuestionController@Active');
+
+       //---------Ads   routes---------------------------
+
+        Route::get('/ad/delete/{id}','AdsController@destroy');
+        Route::get('/ad/edit/{id}','AdsController@edit');
+        Route::post('/ad/edit/{id}','AdsController@update');
+        Route::get('/ad/images/{id}','AdsController@image');
+        Route::get('/ad/create',  'AdsController@create');
+        Route::get('ad/', 'AdsController@index');
+        Route::post('ad/store', 'AdsController@store');
+        Route::get('ad/InActive_ad/{id}', 'AdsController@InActive');
+        Route::get('ad/Active_ad/{id}', 'AdsController@Active');
+
+
+        //---------Tender   routes---------------------------
+
+        Route::get('/tender/delete/{id}','TenderController@destroy');
+        Route::get('/tender/edit/{id}','TenderController@edit');
+        Route::post('/tender/edit/{id}','TenderController@update');
+        Route::get('/tender/images/{id}','TenderController@image');
+        Route::get('/tender/create',  'TenderController@create');
+        Route::get('tender/', 'TenderController@index');
+        Route::post('tender/store', 'TenderController@store');
+        Route::get('tender/InActive_tender/{id}', 'TenderController@InActive');
+        Route::get('tender/Active_tender/{id}', 'TenderController@Active');
+
+
+
+                //---------Tender   routes---------------------------
+
+        Route::get('/exam/delete/{id}','ExamController@destroy');
+        Route::get('/exam/edit/{id}','ExamController@edit');
+        Route::post('/exam/edit/{id}','ExamController@update');
+        Route::get('/exam/images/{id}','ExamController@image');
+        Route::get('/exam/create',  'ExamController@create');
+        Route::get('exam/', 'ExamController@index');
+        Route::post('exam/store', 'ExamController@store');
+        Route::get('exam/InActive_exam/{id}', 'ExamController@InActive');
+        Route::get('exam/Active_exam/{id}', 'ExamController@Active');
+
+
+
+        });

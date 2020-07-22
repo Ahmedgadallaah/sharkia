@@ -1,7 +1,7 @@
 @extends('admin.index')
 @section('content')
 
-<form action="{{url ('/admin/media_minister/store') }}" method="post" enctype="multipart/form-data">
+<form action="{{url ('/admin/media_person/store') }}" method="post" enctype="multipart/form-data">
 {{ csrf_field() }}
 
 <div class="card-body" id="english-form">

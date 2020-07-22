@@ -13,7 +13,7 @@
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>{{ trans('message.name') }} </th>
+
 
                   <th>{{ trans('message.description') }}</th>
 
@@ -24,7 +24,7 @@
                 @foreach($devmaps as $devmap)
                 <tr>
                   <td>{{ $devmap->id }}</td>
-                  <td>{{ $devmap->name }}</td>
+
                   <td>{{ $devmap->description }}</td>
 <td>
                   <a id="delete" class="btn btn-primary" href="{{URL::to('/admin/devmap/edit/'.$devmap->id)}} ">

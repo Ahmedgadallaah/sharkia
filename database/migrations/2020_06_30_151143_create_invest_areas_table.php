@@ -15,6 +15,7 @@ class CreateInvestAreasTable extends Migration
     {
         Schema::create('invest_areas', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->timestamps();
         });
     }

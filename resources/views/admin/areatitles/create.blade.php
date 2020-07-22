@@ -95,14 +95,10 @@
 </div>
 
 
-
-
-
-
- <div class="card-body" id="arabic-form">
+<div class="card-body" id="arabic-form">
     <div class="form-group">
         <label class="required" for="image">{{ trans('message.image') }}</label>
-            <input  type="file" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"  name="image[]" multiple accept="image/*" required>
+            <input  type="file" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"  name="image"  accept="image/*" required>
         @if($errors->has('image'))
             <div class="invalid-feedback">
                 {{ $errors->first('image') }}
@@ -110,6 +106,21 @@
         @endif
     </div>
  </div>
+
+
+
+ <div class="card-body" id="arabic-form">
+    <div class="form-group">
+        <label class="required" for="images">{{ trans('message.gallery') }}</label>
+            <input  type="file" class="form-control {{ $errors->has('images') ? 'is-invalid' : '' }}"  name="images[]" multiple accept="image/*" >
+        @if($errors->has('images'))
+            <div class="invalid-feedback">
+                {{ $errors->first('images') }}
+            </div>
+        @endif
+    </div>
+ </div>
+
 
 <button type="submit" class="btn btn-primary">{{ trans('message.submit') }}</button>
 

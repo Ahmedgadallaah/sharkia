@@ -44,7 +44,7 @@ class InvestMapController extends Controller
 
             $pdf = $request->FILE('pdf');
             $FILENAME = 'invest_map' . '-' . TIME() . '.' . $pdf->GETCLIENTORIGINALEXTENSION();
-            $LOCATION = PUBLIC_PATH('images/invest_map');
+            $LOCATION = PUBLIC_PATH('cv/invest_map');
             $request->FILE('pdf')->MOVE($LOCATION, $FILENAME);
             $data['pdf']= $FILENAME;
          }
@@ -91,10 +91,10 @@ class InvestMapController extends Controller
         $map = InvestMap::findOrFail($id);
 
         IF ($request->HASFILE('pdf')) {
-            @unlink(public_path('images/invest_map/'.$map->pdf));
+            @unlink(public_path('cv/invest_map/'.$map->pdf));
             $pdf = $request->FILE('pdf');
             $FILENAME = 'invest_map' . '-' . TIME() . '.' . $pdf->GETCLIENTORIGINALEXTENSION();
-            $LOCATION = PUBLIC_PATH('images/invest_map');
+            $LOCATION = PUBLIC_PATH('cv/invest_map');
             $request->FILE('pdf')->MOVE($LOCATION, $FILENAME);
             $data['pdf']= $FILENAME;
          }else{
@@ -117,7 +117,7 @@ class InvestMapController extends Controller
     {
 
         $map = InvestMap::find($id);
-        @unlink(public_path('images/invest_map/'.$map->pdf));
+        @unlink(public_path('cv/invest_map/'.$map->pdf));
 
         $map->delete();
         Session::put('message', 'Data Deleted Successfully !!');

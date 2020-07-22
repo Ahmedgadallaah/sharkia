@@ -14,7 +14,7 @@
                 <tr>
                   <th>Id</th>
                   <th>{{ trans('message.name') }} </th>
-                  <th>{{ trans('message.description') }} </th>
+                  <th>{{ trans('message.image') }} </th>
 
                   <th colspan="2"> Action</th>
                 </tr>

@@ -30,6 +30,9 @@
     </div>
  </div>
 
+
+
+
 <button type="submit" class="btn btn-primary">{{ trans('message.submit') }}</button>
 
 </form>

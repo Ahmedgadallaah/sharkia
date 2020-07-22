@@ -25,7 +25,7 @@
 
 
 
-                <td><p><a href="{{asset('images/invest_chance/'.$chance->pdf)}}">{{$chance->pdf}} </a></p></td>
+                <td><p><a href="{{asset('cv/invest_chance/'.$chance->pdf)}}">{{$chance->pdf}} </a></p></td>
 
                   <td>
 

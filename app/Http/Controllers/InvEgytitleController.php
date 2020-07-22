@@ -47,7 +47,7 @@ class InvEgytitleController extends Controller
                 IF ($request->HASFILE('pdf')) {
                     $pdf = $request->FILE('pdf');
                     $FILENAME = 'title' . '-' . TIME() . '.' . $pdf->GETCLIENTORIGINALEXTENSION();
-                    $LOCATION = PUBLIC_PATH('images/invest_egypttitle/');
+                    $LOCATION = PUBLIC_PATH('cv/invest_egypttitle/');
                     $request->FILE('pdf')->MOVE($LOCATION, $FILENAME);
                     $data['pdf']= $FILENAME;
                   }
@@ -102,10 +102,10 @@ class InvEgytitleController extends Controller
                 ];
 
                 IF ($request->HASFILE('pdf')) {
-                    @unlink(public_path('images/invest_egyptmap/'.$title->pdf));
+                    @unlink(public_path('cv/invest_egyptmap/'.$title->pdf));
                     $pdf = $request->FILE('pdf');
                     $FILENAME = 'invest_egyptmap' . '-' . TIME() . '.' . $pdf->GETCLIENTORIGINALEXTENSION();
-                    $LOCATION = PUBLIC_PATH('images/invest_egyptmap/');
+                    $LOCATION = PUBLIC_PATH('cv/invest_egyptmap/');
                     $request->FILE('pdf')->MOVE($LOCATION, $FILENAME);
                     $title->pdf= $FILENAME;
                   }else{
@@ -128,6 +128,7 @@ class InvEgytitleController extends Controller
     public function destroy($id)
     {
         $title = InvEgytitle::find($id);
+        @unlink(public_path('cv/invest_egyptmap/'.$title->pdf));
         $title->delete();
         Session::put('message', 'Data Deleted Successfully !!');
         return Redirect::to('/admin/egypttitle/');

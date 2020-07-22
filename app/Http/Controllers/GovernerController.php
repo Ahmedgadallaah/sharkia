@@ -117,7 +117,7 @@ class GovernerController extends Controller
                 ],
                 'ar' => [
                     'name'=> $request->input('ar_name'),
-                    'date'=>$request->input('en_date'),
+                    'date'=>$request->input('ar_date'),
                 ],
             ];
 

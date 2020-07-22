@@ -47,12 +47,22 @@ class InvestAreatitleController extends Controller
 
 
         $data['invest_area_id'] =$request->input('invest_area_id');
+
+        IF ($request->HASFILE('image')) {
+
+            $image = $request->FILE('image');
+            $FILENAME = 'areatitle' . '-' . TIME() . '.' . $image->GETCLIENTORIGINALEXTENSION();
+            $LOCATION = PUBLIC_PATH('images/areatitle');
+            $request->FILE('image')->MOVE($LOCATION, $FILENAME);
+            $data['image']= $FILENAME;
+         }
         //'category_id' => $request->category_id;
         //dd($data);
+
         $p=Areatitle::create($data);
 
 
-        if ($files = $request->file('image')) {
+        if ($files = $request->file('images')) {
             // Define upload path
              $destinationPath = public_path('images/'); // upload path
              foreach($files as $img) {
@@ -136,14 +146,25 @@ class InvestAreatitleController extends Controller
         $data['invest_area_id'] =$request->input('invest_area_id');
         //  $p=Areatitle::create($data);
 
+        IF ($request->HASFILE('image')) {
+            @unlink(public_path('images/areatitle'.$title->image));
+            $image = $request->FILE('image');
+            $FILENAME = 'areatitle' . '-' . TIME() . '.' . $image->GETCLIENTORIGINALEXTENSION();
+            $LOCATION = PUBLIC_PATH('images/areatitle');
+            $request->FILE('image')->MOVE($LOCATION, $FILENAME);
+            $data['image']= $FILENAME;
+         }else{
+            $data['image']=$title->image;
+         }
+
         $title->update($data);
 
-        if ($files = $request->file('image')) {
+        if ($files = $request->file('images')) {
             // Define upload path
-             $destinationPath = public_path('image/'); // upload path
+             $destinationPath = public_path('images/'); // upload path
              foreach($files as $img) {
                  // Upload Orginal Image
-                @unlink(public_path('images/'.$title->image));
+                @unlink(public_path('images/'.$title->images));
                 $name =$img->getClientOriginalName();
                 $img->move($destinationPath, $name);
                  // Save In Database

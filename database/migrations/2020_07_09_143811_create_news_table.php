@@ -15,6 +15,8 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image');
+            $table->enum('type', ['governer', 'Complaint'])->default('governer');// governe = محافظ ونواب Complaint = منظومة الشكاوي
             $table->timestamps();
         });
     }

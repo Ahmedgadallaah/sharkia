@@ -25,7 +25,7 @@
                   <td>{{ $title->name }}</td>
 
 
-                <td><p><a href="{{asset('images/invest_egypttitle/'.$title->pdf)}}">{{$title->pdf}} </a></p></td>
+                <td><p><a href="{{asset('cv/invest_egypttitle/'.$title->pdf)}}">{{$title->pdf}} </a></p></td>
 
                   <td>
 
